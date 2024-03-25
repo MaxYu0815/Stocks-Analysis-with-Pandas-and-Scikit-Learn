@@ -5,7 +5,7 @@ from pandas import Series, DataFrame
 
 pd.options.display.width = 0
 
-df = pd.read_csv('./ABBV.csv')
+df = pd.read_csv('C:/Users/Max/desktop/NVDA (1).csv')
 print (df.head())
 print (df.tail())
 
@@ -36,7 +36,7 @@ forecast_out = int(math.ceil(0.01 * len(dfreg)))
 # Separating the label here, we want to predict the AdjClose
 forecast_col = 'Adj Close'
 dfreg['label'] = dfreg[forecast_col].shift(-forecast_out)
-X = np.array(dfreg.drop(['label'], 1))
+X = np.array(dfreg.drop(['label'], axis=1))
 # Scale the X so that everyone can have the same distribution for linear regression
 X = preprocessing.scale(X)
 # Finally We want to find Data Series of late X and early X (train) for model generation and evaluation
